@@ -8,3 +8,10 @@ Se você "clonar" esse repositório, você tem que colocar em disco local (C:).
 
 **IDE:** *Net Beans*
 **Version Java:** *11.0.11*
+
+Este software consegue computar os votos, armazenar os votos e dados de eleitores.
+
+**Arquivos:**
+
+*eleitores.txt* - Dados armazenados dos eleitores
+*votos-computados* - Votos armazenados dos candidatos 

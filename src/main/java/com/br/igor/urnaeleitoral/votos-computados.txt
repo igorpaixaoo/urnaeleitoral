@@ -1,8 +1,0 @@
-VOTOS:
-
-Total dos votos: 1
-
-Jair Bolsonaro, PL 22 = 1, Votos: 100%
-Lula, PT 13 = 0, Votos: 0%
-Ciro Gomes, PDT 12 = 0, Votos: 0%
-Sérgio Moro, PODE 19 = 0, Votos: 0%
