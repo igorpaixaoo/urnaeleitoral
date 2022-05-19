@@ -15,3 +15,10 @@ Este software consegue computar os votos, armazenar os votos e dados de eleitore
 
 *eleitores.txt* - Dados armazenados dos eleitores
 *votos-computados* - Votos armazenados dos candidatos 
+
+## Atualização:
+
+*Correção de bugs;
+*Votos brancos/nulos;
+*Verificação se o candidato existe;
+*Armazenamento de eleitores ordenados;
