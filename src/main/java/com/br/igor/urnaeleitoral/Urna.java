@@ -3,18 +3,20 @@ package com.br.igor.urnaeleitoral;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.LinkedHashSet;
+import java.util.NavigableSet;
 import java.util.Objects;
-import java.util.Set;
+import java.util.TreeSet;
 
 /**
  *
  * @author Igor
+ * @version 1.4.2.0
  */
-public class Urna extends javax.swing.JFrame {
+public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
     private static String nome;
     private static String cpf;
     
-    public static Set<String> eleitores = new LinkedHashSet<>();
+    public static NavigableSet<String> eleitores = new TreeSet<>();
 
     public Urna() {
         initComponents();
@@ -170,7 +172,7 @@ public class Urna extends javax.swing.JFrame {
         
         nome = jNomeCompleto.getText();
         cpf = jCPF.getText();
-        eleitores.add("Nome: " + nome + ", CPF: " + cpf /*+ ", Data: " + dt.format(c.getTime()) + ", Hora: " + Calendar.HOUR_OF_DAY + ":" + Calendar.MINUTE + ":" + Calendar.SECOND*/);
+        eleitores.add("Nome: " + nome + ", CPF: " + cpf);
         
         dispose();
         new Votacao().setVisible(true);
@@ -223,9 +225,7 @@ public class Urna extends javax.swing.JFrame {
 
     public static String getCpf() {
         return cpf;
-    }
-
-       
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -240,4 +240,10 @@ public class Urna extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public int compareTo(Urna o) {
+        return nome.compareTo(o.getName());
+    }
+
 }

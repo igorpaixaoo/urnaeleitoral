@@ -28,7 +28,7 @@ public class Dados {
         
         NumberFormat nf = NumberFormat.getPercentInstance(Locale.getDefault());
         
-        //Computar os votos
+        //Computa os votos
         File file = new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\votos-computados.txt");
         FileWriter fw = new FileWriter(file, false);
         BufferedWriter bw = new BufferedWriter(fw);

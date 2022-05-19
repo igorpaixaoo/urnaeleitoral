@@ -8,12 +8,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 /**
  *
- * @author Ivo
+ * @author Igor
  */
 public class Votacao extends javax.swing.JFrame {
     
@@ -179,6 +180,11 @@ public class Votacao extends javax.swing.JFrame {
         jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setText("BRANCO");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton12.setBackground(new java.awt.Color(0, 255, 0));
         jButton12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -269,16 +275,54 @@ public class Votacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
         jNumero.setText("");
         candidato = 0;
         jImgCandidato.setIcon(null);
         nomeCandidato.setText("");
+        votos1 = 0; votos2 = 0; votos3 = 0; votos4 = 0;
         
     }//GEN-LAST:event_jButton10ActionPerformed
 
     //Confirma o voto
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        if(candidato == 22 || candidato == 13 || candidato == 12 || candidato == 19){
+            dispose();
+            
+            new Thread(){
+                @Override
+                public void run(){                        
+                    try {
+                        AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\somUrna.mp3")));
+                        play.play();
+                        play.close();
+                    } catch (FileNotFoundException | JavaLayerException ex) {
+                        ex.printStackTrace();
+                    } 
+                }
+            }.start();        
+
+            try {
+                new Dados().dados();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        
+            new EventQueue().invokeLater(new Runnable(){
+                @Override
+                public void run(){
+                    new Urna().setVisible(true);
+                }
+            });
+        }
+        else JOptionPane.showMessageDialog(null, "Candidato inválido!");
+
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        //Voto Nulo
+        votos1 = 0; votos2 = 0; votos3 = 0; votos4 = 0;
+        dispose();
+        
         new Thread(){
             @Override
             public void run(){                        
@@ -292,8 +336,6 @@ public class Votacao extends javax.swing.JFrame {
             }
         }.start();
         
-        dispose();
-        
         try {
             new Dados().dados();
         } catch (IOException ex) {
@@ -306,8 +348,7 @@ public class Votacao extends javax.swing.JFrame {
                 new Urna().setVisible(true);
             }
         });
-
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_jButton11ActionPerformed
     
     public void run(){
         jButton1.addActionListener(new ActionListener() {
