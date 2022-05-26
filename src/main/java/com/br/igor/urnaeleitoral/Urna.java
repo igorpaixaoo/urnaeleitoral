@@ -47,7 +47,7 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Urna Eleitoral - Cadastro");
+        jLabel1.setText("Urna Eleitoral - Eleitorado");
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 

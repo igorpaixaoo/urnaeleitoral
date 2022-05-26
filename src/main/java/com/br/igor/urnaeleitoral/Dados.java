@@ -17,14 +17,15 @@ public class Dados {
     
     public void dados() throws IOException{
         //Soma todos os votos dos respectivos candidatos
-        int soma = Votacao.votos1 + Votacao.votos2 + Votacao.votos3 + Votacao.votos4;
-        double soma2 = Votacao.votos1 + Votacao.votos2 + Votacao.votos3 + Votacao.votos4;
+        int soma = Votacao.votos1 + Votacao.votos2 + Votacao.votos3 + Votacao.votos4 + Votacao.getVotosBrancos();
+        double soma2 = Votacao.votos1 + Votacao.votos2 + Votacao.votos3 + Votacao.votos4 + Votacao.getVotosBrancos();
         
         //Porcetagem do total de votos
         Double porcVotos1 = Votacao.votos1 / soma2;
         Double porcVotos2 = Votacao.votos2 / soma2;
         Double porcVotos3 = Votacao.votos3 / soma2;
         Double porcVotos4 = Votacao.votos4 / soma2;
+        Double porcBranco = Votacao.getVotosBrancos() / soma2;
         
         NumberFormat nf = NumberFormat.getPercentInstance(Locale.getDefault());
         
@@ -46,6 +47,7 @@ public class Dados {
         bw.newLine();
         bw.write(NomesCandidatos.MORO.getNomeCandidato() + " = " + Votacao.votos4 + ", Votos: " + nf.format(porcVotos4));
         bw.newLine();
+        bw.write("Votos Brancos = " + Votacao.getVotosBrancos() + ", Votos: " + nf.format(porcBranco));
         bw.flush();
         bw.close();
         
@@ -60,7 +62,7 @@ public class Dados {
         SimpleDateFormat sd = new SimpleDateFormat("dd'/'MM'/'yyyy");
         
         for(String e : Urna.eleitores){
-            bw2.write(e + ", Data: " + sd.format(file2.lastModified()));
+            bw2.write(e + ", Data: " + sd.format(file2.lastModified()) + ", Candidato: " + Votacao.getCandidato());
             bw2.newLine();
         }
         

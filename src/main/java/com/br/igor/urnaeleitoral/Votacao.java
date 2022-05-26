@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
@@ -18,8 +20,9 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  */
 public class Votacao extends javax.swing.JFrame {
     
-    private Integer candidato;
+    private static Integer candidato;
     public static Integer votos1 = 0, votos2 = 0, votos3 = 0, votos4 = 0;
+    private static Integer votosBrancos = 0;    
     
     public Votacao() {
         initComponents();
@@ -51,6 +54,7 @@ public class Votacao extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jNumero = new javax.swing.JLabel();
         nomeCandidato = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -204,6 +208,8 @@ public class Votacao extends javax.swing.JFrame {
         nomeCandidato.setFont(new java.awt.Font("Tw Cen MT", 0, 20)); // NOI18N
         nomeCandidato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\brasao.png")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -229,9 +235,11 @@ public class Votacao extends javax.swing.JFrame {
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(24, 24, 24))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -242,15 +250,19 @@ public class Votacao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(nomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jImgCandidato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nomeCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jImgCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 91, Short.MAX_VALUE)
+                        .addGap(0, 37, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -275,12 +287,13 @@ public class Votacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        //Corrigir
         jNumero.setText("");
         candidato = 0;
         jImgCandidato.setIcon(null);
         nomeCandidato.setText("");
         votos1 = 0; votos2 = 0; votos3 = 0; votos4 = 0;
-        
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     //Confirma o voto
@@ -319,13 +332,15 @@ public class Votacao extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        //Voto Nulo
+        //Voto Branco
+        votosBrancos++;
+        jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\votobranco.png"));
         votos1 = 0; votos2 = 0; votos3 = 0; votos4 = 0;
         dispose();
         
         new Thread(){
             @Override
-            public void run(){                        
+            public void run(){                  
                 try {
                     AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\somUrna.mp3")));
                     play.play();
@@ -333,6 +348,7 @@ public class Votacao extends javax.swing.JFrame {
                 } catch (FileNotFoundException | JavaLayerException ex) {
                     ex.printStackTrace();
                 } 
+                
             }
         }.start();
         
@@ -460,9 +476,15 @@ public class Votacao extends javax.swing.JFrame {
         });
     }
 
-    public Integer getCandidato() {
+
+    public static Integer getVotosBrancos() {
+        return votosBrancos;
+    }
+
+    public static Integer getCandidato() {
         return candidato;
     }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -479,6 +501,7 @@ public class Votacao extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jImgCandidato;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jNumero;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
