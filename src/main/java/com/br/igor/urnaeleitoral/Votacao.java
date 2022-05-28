@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
@@ -23,6 +21,7 @@ public class Votacao extends javax.swing.JFrame {
     private static Integer candidato;
     public static Integer votos1 = 0, votos2 = 0, votos3 = 0, votos4 = 0;
     private static Integer votosBrancos = 0;    
+    public static Integer candidatoVotado;
     
     public Votacao() {
         initComponents();
@@ -289,45 +288,68 @@ public class Votacao extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         //Corrigir
         jNumero.setText("");
-        candidato = 0;
         jImgCandidato.setIcon(null);
         nomeCandidato.setText("");
-        votos1 = 0; votos2 = 0; votos3 = 0; votos4 = 0;
-
+        candidato = 0;
+     
     }//GEN-LAST:event_jButton10ActionPerformed
 
     //Confirma o voto
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        if(candidato == 22 || candidato == 13 || candidato == 12 || candidato == 19){
-            dispose();
-            
-            new Thread(){
-                @Override
-                public void run(){                        
-                    try {
-                        AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\somUrna.mp3")));
-                        play.play();
-                        play.close();
-                    } catch (FileNotFoundException | JavaLayerException ex) {
-                        ex.printStackTrace();
-                    } 
-                }
-            }.start();        
-
-            try {
-                new Dados().dados();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        
-            new EventQueue().invokeLater(new Runnable(){
-                @Override
-                public void run(){
-                    new Urna().setVisible(true);
-                }
-            });
+               
+        switch (candidato) {
+            case 22:
+                votos1++;
+                candidatoVotado = Candidatos.BOLSONARO.getNumeroEleitoral();
+                break;
+            case 13:
+                votos2++;
+                candidatoVotado = Candidatos.LULA.getNumeroEleitoral();
+                break;
+            case 19:
+                votos4++;
+                candidatoVotado = Candidatos.MORO.getNumeroEleitoral();
+                break;
+            case 12:
+                votos3++;
+                candidatoVotado = Candidatos.CIRO.getNumeroEleitoral();
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Candidato inválido!");
+                break;
         }
-        else JOptionPane.showMessageDialog(null, "Candidato inválido!");
+         
+        //Música da urna
+        new Thread(){
+            @Override
+            public void run(){                        
+                try {
+                    AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\somUrna.mp3")));
+                    play.play();
+                    play.close();
+                } catch (FileNotFoundException | JavaLayerException ex) {
+                    ex.printStackTrace();
+                } 
+            }
+        }.start(); 
+
+        dispose();
+
+        //Método para armazenar os dados
+        try {
+            new Dados().dados();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        //Retorna ao "Eleitorado"
+        new EventQueue().invokeLater(new Runnable(){
+            @Override
+            public void run(){
+                new Urna().setVisible(true);
+            }
+        });
+        
 
     }//GEN-LAST:event_jButton12ActionPerformed
 
@@ -335,7 +357,7 @@ public class Votacao extends javax.swing.JFrame {
         //Voto Branco
         votosBrancos++;
         jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\votobranco.png"));
-        votos1 = 0; votos2 = 0; votos3 = 0; votos4 = 0;
+        
         dispose();
         
         new Thread(){
@@ -448,22 +470,22 @@ public class Votacao extends javax.swing.JFrame {
         if(candidato == Candidatos.BOLSONARO.getNumeroEleitoral()){
             jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\jairbolsonaro.png"));
             nomeCandidato.setText(NomesCandidatos.BOLSONARO.getNomeCandidato());
-            votos1++;
+
         }
         if(candidato == Candidatos.LULA.getNumeroEleitoral()){
             jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\lula.png"));
             nomeCandidato.setText(NomesCandidatos.LULA.getNomeCandidato());
-            votos2++;
+
         }
         if(candidato == Candidatos.CIRO.getNumeroEleitoral()){
             jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\ciro.png"));
             nomeCandidato.setText(NomesCandidatos.CIRO.getNomeCandidato());
-            votos3++;
+
         }
         if(candidato == Candidatos.MORO.getNumeroEleitoral()){
             jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\sergiomoro.png"));
             nomeCandidato.setText(NomesCandidatos.MORO.getNomeCandidato());
-            votos4++;
+
         }
     }
         
@@ -476,7 +498,6 @@ public class Votacao extends javax.swing.JFrame {
         });
     }
 
-
     public static Integer getVotosBrancos() {
         return votosBrancos;
     }
@@ -485,6 +506,11 @@ public class Votacao extends javax.swing.JFrame {
         return candidato;
     }
 
+    public static Integer getCandidatoVotado() {
+        return candidatoVotado;
+    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

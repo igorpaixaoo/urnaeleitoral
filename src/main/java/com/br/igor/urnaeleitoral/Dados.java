@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -59,15 +59,16 @@ public class Dados {
         bw2.newLine();
         bw2.newLine();        
         
-        SimpleDateFormat sd = new SimpleDateFormat("dd'/'MM'/'yyyy");
+
         
         for(String e : Urna.eleitores){
-            bw2.write(e + ", Data: " + sd.format(file2.lastModified()) + ", Candidato: " + Votacao.getCandidato());
+            bw2.write(e);            
             bw2.newLine();
         }
         
         bw2.flush();
         bw2.close();
+    
         
     }
 

@@ -10,7 +10,7 @@ import java.util.TreeSet;
 /**
  *
  * @author Igor
- * @version 1.4.2.0
+ * @version 1.4.5
  */
 public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
     private static String nome;
@@ -168,7 +168,7 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
         // TODO add your handling code here:
         
         Calendar c = Calendar.getInstance();
-        DateFormat dt = DateFormat.getDateInstance(DateFormat.MEDIUM);
+        DateFormat dt = DateFormat.getDateInstance(DateFormat.SHORT);
         
         nome = jNomeCompleto.getText();
         cpf = jCPF.getText();
