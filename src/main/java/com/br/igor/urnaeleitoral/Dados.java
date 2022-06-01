@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.NumberFormat;
-import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -13,6 +12,10 @@ import java.util.Locale;
  * @author Igor
  */
 public class Dados {
+    //Diretório do usuário
+    String directoryName = System.getProperty("user.dir");
+    String diretorio = directoryName + "\\src\\main\\java\\com\\br\\igor\\urnaeleitoral";
+
     private Urna urna;
     
     public void dados() throws IOException{
@@ -30,7 +33,7 @@ public class Dados {
         NumberFormat nf = NumberFormat.getPercentInstance(Locale.getDefault());
         
         //Computa os votos
-        File file = new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\votos-computados.txt");
+        File file = new File(diretorio+"\\votos-computados.txt");
         FileWriter fw = new FileWriter(file, false);
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("VOTOS:");
@@ -52,15 +55,13 @@ public class Dados {
         bw.close();
         
         //Armazenar os nomes dos eleitores
-        File file2 = new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\eleitores.txt");
+        File file2 = new File(diretorio+"\\eleitores.txt");
         FileWriter fw2 = new FileWriter(file2, false);
         BufferedWriter bw2 = new BufferedWriter(fw2);
         bw2.write("ELEITORES: ");
         bw2.newLine();
         bw2.newLine();        
-        
 
-        
         for(String e : Urna.eleitores){
             bw2.write(e);            
             bw2.newLine();
@@ -68,7 +69,6 @@ public class Dados {
         
         bw2.flush();
         bw2.close();
-    
         
     }
 

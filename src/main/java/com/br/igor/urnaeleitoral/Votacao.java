@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
+import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
@@ -17,6 +19,10 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  * @author Igor
  */
 public class Votacao extends javax.swing.JFrame {
+
+    //Diretório do usuário
+    String directoryName = System.getProperty("user.dir");
+    String diretorio = directoryName + "\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\util";
     
     private static Integer candidato;
     public static Integer votos1 = 0, votos2 = 0, votos3 = 0, votos4 = 0;
@@ -207,7 +213,10 @@ public class Votacao extends javax.swing.JFrame {
         nomeCandidato.setFont(new java.awt.Font("Tw Cen MT", 0, 20)); // NOI18N
         nomeCandidato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\brasao.png")); // NOI18N
+
+        String directoryName = System.getProperty("user.dir");
+        String diretorio = directoryName + "\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\util";
+        jLabel3.setIcon(new javax.swing.ImageIcon(diretorio+"\\brasao.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -318,13 +327,13 @@ public class Votacao extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Candidato inválido!");
                 break;
         }
-         
+
         //Música da urna
         new Thread(){
             @Override
             public void run(){                        
                 try {
-                    AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\somUrna.mp3")));
+                    AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(diretorio+"\\somUrna.mp3"));
                     play.play();
                     play.close();
                 } catch (FileNotFoundException | JavaLayerException ex) {
@@ -356,23 +365,20 @@ public class Votacao extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         //Voto Branco
         votosBrancos++;
-        jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\votobranco.png"));
+        jImgCandidato.setIcon(new ImageIcon(diretorio+"votobranco.png"));
         
         dispose();
         
-        new Thread(){
-            @Override
-            public void run(){                  
-                try {
-                    AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(new File("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\somUrna.mp3")));
-                    play.play();
-                    play.close();
-                } catch (FileNotFoundException | JavaLayerException ex) {
-                    ex.printStackTrace();
-                } 
-                
+        new Thread(() -> {
+            try {
+                AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(diretorio+"somUrna.mp3"));
+                play.play();
+                play.close();
+            } catch (FileNotFoundException | JavaLayerException ex) {
+                ex.printStackTrace();
             }
-        }.start();
+
+        }).start();
         
         try {
             new Dados().dados();
@@ -380,122 +386,87 @@ public class Votacao extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         
-        new EventQueue().invokeLater(new Runnable(){
-            @Override
-            public void run(){
-                new Urna().setVisible(true);
-            }
-        });
-    }//GEN-LAST:event_jButton11ActionPerformed
-    
-    public void run(){
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "1");
-                candidato = Integer.parseInt(jNumero.getText());
-                verificarCandidato();
+        new EventQueue().invokeLater(() -> new Urna().setVisible(true));
+    }
 
-            }
+    //GEN-LAST:event_jButton11ActionPerformed
+    public void run(){
+        jButton1.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "1");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
+
         });
-        jButton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "2");
-                candidato = Integer.parseInt(jNumero.getText());
-                verificarCandidato();
-            }
+        jButton2.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "2");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
         });
-        jButton3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "3");
-                candidato = Integer.parseInt(jNumero.getText());
-                verificarCandidato();
-            }
+        jButton3.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "3");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
         });
-        jButton4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "4");
-                candidato = Integer.parseInt(jNumero.getText());
-                verificarCandidato();
-            }
+        jButton4.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "4");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
         });
-        jButton5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "5");
-                candidato = Integer.parseInt(jNumero.getText());                
-                verificarCandidato();
-            }
+        jButton5.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "5");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
         });
-        jButton6.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "6");
-                candidato = Integer.parseInt(jNumero.getText());                
-                verificarCandidato();
-            }
+        jButton6.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "6");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
         });
-        jButton7.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "7");
-                candidato = Integer.parseInt(jNumero.getText());                
-                verificarCandidato();
-            }
+        jButton7.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "7");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
         });
-        jButton8.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "8");
-                candidato = Integer.parseInt(jNumero.getText());                
-                verificarCandidato();
-            }
+        jButton8.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "8");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
         });
-        jButton9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jNumero.setText(jNumero.getText() + "9");
-                candidato = Integer.parseInt(jNumero.getText());                
-                verificarCandidato();
-            }
-        });        
+        jButton9.addActionListener(e -> {
+            jNumero.setText(jNumero.getText() + "9");
+            candidato = Integer.parseInt(jNumero.getText());
+            verificarCandidato();
+        });
         
     }
     
     public void verificarCandidato(){
         
-        if(candidato == Candidatos.BOLSONARO.getNumeroEleitoral()){
-            jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\jairbolsonaro.png"));
+        if(candidato.equals(Candidatos.BOLSONARO.getNumeroEleitoral())){
+            jImgCandidato.setIcon(new ImageIcon(diretorio+"\\jairbolsonaro.png"));
             nomeCandidato.setText(NomesCandidatos.BOLSONARO.getNomeCandidato());
 
         }
-        if(candidato == Candidatos.LULA.getNumeroEleitoral()){
-            jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\lula.png"));
+        if(candidato.equals(Candidatos.LULA.getNumeroEleitoral())){
+            jImgCandidato.setIcon(new ImageIcon(diretorio+"\\lula.png"));
             nomeCandidato.setText(NomesCandidatos.LULA.getNomeCandidato());
 
         }
-        if(candidato == Candidatos.CIRO.getNumeroEleitoral()){
-            jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\ciro.png"));
+        if(candidato.equals(Candidatos.CIRO.getNumeroEleitoral())){
+            jImgCandidato.setIcon(new ImageIcon(diretorio+"\\ciro.png"));
             nomeCandidato.setText(NomesCandidatos.CIRO.getNomeCandidato());
 
         }
-        if(candidato == Candidatos.MORO.getNumeroEleitoral()){
-            jImgCandidato.setIcon(new ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\sergiomoro.png"));
+        if(candidato.equals(Candidatos.MORO.getNumeroEleitoral())){
+            jImgCandidato.setIcon(new ImageIcon(diretorio+"\\sergiomoro.png"));
             nomeCandidato.setText(NomesCandidatos.MORO.getNomeCandidato());
 
         }
     }
         
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Votacao().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new Votacao().setVisible(true));
     }
 
     public static Integer getVotosBrancos() {

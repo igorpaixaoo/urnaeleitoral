@@ -2,7 +2,6 @@ package com.br.igor.urnaeleitoral;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.LinkedHashSet;
 import java.util.NavigableSet;
 import java.util.Objects;
 import java.util.TreeSet;
@@ -10,12 +9,17 @@ import java.util.TreeSet;
 /**
  *
  * @author Igor
- * @version 1.4.5
+ * @version 1.5
  */
 public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
+    //Diretório do usuário
+    String directoryName = System.getProperty("user.dir");
+    String diretorio = directoryName + "\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\util";
+
     private static String nome;
     private static String cpf;
-    
+
+    //Lista dos eleitores
     public static NavigableSet<String> eleitores = new TreeSet<>();
 
     public Urna() {
@@ -75,7 +79,7 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\urnaeleitoral\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\brasao.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(diretorio+"\\brasao.png")); // NOI18N
 
         jNomeCompleto.setBackground(new java.awt.Color(255, 255, 255));
         jNomeCompleto.setFont(new java.awt.Font("Tw Cen MT", 0, 20)); // NOI18N
@@ -186,11 +190,7 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
 
     public static void main(String args[]) {
         
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Urna().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new Urna().setVisible(true));
     }
 
     @Override

@@ -1,5 +1,5 @@
 # Urna Eleitoral, feita por Igor
-## Versão: 1.4.5
+## Versão: 1.5
 
 Essa urna eleitoral simula as eleições de 2022.
 **CANDIDATOS:** Jair Bolsonaro 22, Lula 13, Ciro Gomes 12, Sérgio Moro 19.
@@ -7,7 +7,7 @@ Essa urna eleitoral simula as eleições de 2022.
 Se você "clonar" esse repositório, você tem que colocar em disco local (C:).
 
 **IDE:** *Net Beans*
-**Version Java:** *11.0.11*
+**Version Java:** *17.0.3.1*
 
 Este software consegue computar os votos, armazenar os votos e dados de eleitores.
 
@@ -19,7 +19,5 @@ Este software consegue computar os votos, armazenar os votos e dados de eleitore
 ## Atualização:
 
 *Correção de bugs;
-*Mudança de texto;
-*Foto de votação branco;
-*Adicionado em "votos-computados.txt" votos Brancos;
-*Adicionado em "Eleitores.txt" o número do candidato do determinado eleitor;
+*Correção de bugs nos caminhos de diretórios;
+*Clean Code;
