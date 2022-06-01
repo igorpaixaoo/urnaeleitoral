@@ -4,7 +4,7 @@
 Essa urna eleitoral simula as eleições de 2022.
 **CANDIDATOS:** Jair Bolsonaro 22, Lula 13, Ciro Gomes 12, Sérgio Moro 19.
 
-**IDE:** *Net Beans*
+**IDE:** *IntelliJ*
 **Version Java:** *17.0.3.1*
 
 Este software consegue computar os votos, armazenar os votos e dados de eleitores.
