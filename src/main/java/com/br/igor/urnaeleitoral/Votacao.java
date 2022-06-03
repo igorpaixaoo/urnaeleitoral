@@ -1,14 +1,9 @@
 package com.br.igor.urnaeleitoral;
 
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
@@ -210,13 +205,8 @@ public class Votacao extends javax.swing.JFrame {
         jNumero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jNumero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        nomeCandidato.setFont(new java.awt.Font("Tw Cen MT", 0, 20)); // NOI18N
+        nomeCandidato.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         nomeCandidato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-
-        String directoryName = System.getProperty("user.dir");
-        String diretorio = directoryName + "\\src\\main\\java\\com\\br\\igor\\urnaeleitoral\\util";
-        jLabel3.setIcon(new javax.swing.ImageIcon(diretorio+"\\brasao.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -389,7 +379,7 @@ public class Votacao extends javax.swing.JFrame {
         new EventQueue().invokeLater(() -> new Urna().setVisible(true));
     }
 
-    //GEN-LAST:event_jButton11ActionPerformed
+//GEN-LAST:event_jButton11ActionPerformed
     public void run(){
         jButton1.addActionListener(e -> {
             jNumero.setText(jNumero.getText() + "1");
