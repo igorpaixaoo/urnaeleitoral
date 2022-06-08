@@ -1,6 +1,9 @@
 package com.br.igor.urnaeleitoral;
 
 import java.awt.EventQueue;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,8 +30,10 @@ public class Votacao extends javax.swing.JFrame {
     public Votacao() {
         initComponents();
         setLocationRelativeTo(null);
+        setLayout(null);
         
         run();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -295,27 +300,25 @@ public class Votacao extends javax.swing.JFrame {
 
     //Confirma o voto
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-               
+
         switch (candidato) {
-            case 22:
+            case 22 -> {
                 votos1++;
                 candidatoVotado = Candidatos.BOLSONARO.getNumeroEleitoral();
-                break;
-            case 13:
+            }
+            case 13 -> {
                 votos2++;
                 candidatoVotado = Candidatos.LULA.getNumeroEleitoral();
-                break;
-            case 19:
+            }
+            case 19 -> {
                 votos4++;
                 candidatoVotado = Candidatos.MORO.getNumeroEleitoral();
-                break;
-            case 12:
+            }
+            case 12 -> {
                 votos3++;
                 candidatoVotado = Candidatos.CIRO.getNumeroEleitoral();
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Candidato inválido!");
-                break;
+            }
+            default -> JOptionPane.showMessageDialog(null, "Candidato inválido!");
         }
 
         //Música da urna
@@ -427,9 +430,11 @@ public class Votacao extends javax.swing.JFrame {
             candidato = Integer.parseInt(jNumero.getText());
             verificarCandidato();
         });
-        
+
+
+
     }
-    
+
     public void verificarCandidato(){
         
         if(candidato.equals(Candidatos.BOLSONARO.getNumeroEleitoral())){
@@ -470,9 +475,7 @@ public class Votacao extends javax.swing.JFrame {
     public static Integer getCandidatoVotado() {
         return candidatoVotado;
     }
-    
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;

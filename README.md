@@ -1,5 +1,5 @@
 # Urna Eleitoral, feita por Igor
-## Versão: 1.5.2
+## Versão: 1.5.8
 
 Essa urna eleitoral simula as eleições de 2022.
 **CANDIDATOS:** Jair Bolsonaro 22, Lula 13, Ciro Gomes 12, Sérgio Moro 19.
@@ -16,7 +16,7 @@ Este software consegue computar os votos, armazenar os votos e dados de eleitore
 
 ## Atualização:
 
-*Sistema de horário no Eleitorado;
-*Melhoramento nos textos;
-*Correção de bugs;
+*Melhoramento do código;
+*Lambda Expressions;
+
 

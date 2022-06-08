@@ -1,9 +1,6 @@
 package com.br.igor.urnaeleitoral;
 
-import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.NavigableSet;
 import java.util.Objects;
 import java.util.TreeSet;
@@ -11,7 +8,7 @@ import java.util.TreeSet;
 /**
  *
  * @author Igor
- * @version 1.5.2
+ * @version 1.5.8
  */
 public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
     //Diretório do usuário
@@ -213,9 +210,7 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
                     e.printStackTrace();
                 }
             }
-
         }).start();
-
     }
     
     public static void main(String args[]) {
