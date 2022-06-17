@@ -1,5 +1,6 @@
 package com.br.igor.urnaeleitoral;
 
+import java.awt.*;
 import java.util.Date;
 import java.util.NavigableSet;
 import java.util.Objects;
@@ -28,7 +29,6 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
         horario();
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -50,7 +50,7 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", Font.BOLD, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Urna Eleitoral - Eleitorado");
@@ -58,34 +58,26 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
-        jButton1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Enviar");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(0, 153, 51)));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jButton2.setBackground(new java.awt.Color(255, 204, 0));
-        jButton2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Limpar");
         jButton2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 0), null));
         jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         jNomeCompleto.setBackground(new java.awt.Color(255, 255, 255));
-        jNomeCompleto.setFont(new java.awt.Font("Tw Cen MT", 0, 20)); // NOI18N
+        jNomeCompleto.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 20)); // NOI18N
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Dialog", Font.PLAIN, 18)); // NOI18N
         jLabel4.setText("Nome Completo:");
 
         jCPF.setBackground(new java.awt.Color(255, 255, 255));
@@ -94,12 +86,12 @@ public class Urna extends javax.swing.JFrame implements Comparable<Urna>{
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jCPF.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
+        jCPF.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 18)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Dialog", Font.PLAIN, 18)); // NOI18N
         jLabel5.setText("CPF:");
 
-        jHorario.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
+        jHorario.setFont(new java.awt.Font("Arial Black", Font.PLAIN, 20)); // NOI18N
         jHorario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

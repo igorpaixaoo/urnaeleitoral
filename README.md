@@ -18,5 +18,6 @@ Este software consegue computar os votos, armazenar os votos e dados de eleitore
 
 *Melhoramento do código;
 *Lambda Expressions;
+*Adicionado um horário;
 
 

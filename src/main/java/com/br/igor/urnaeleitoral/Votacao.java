@@ -1,9 +1,6 @@
 package com.br.igor.urnaeleitoral;
 
-import java.awt.EventQueue;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,7 +33,6 @@ public class Votacao extends javax.swing.JFrame {
 
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -66,53 +62,53 @@ public class Votacao extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("1");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("2");
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("3");
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("5");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("6");
         jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton7.setBackground(new java.awt.Color(0, 0, 0));
-        jButton7.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("7");
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("4");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton8.setBackground(new java.awt.Color(0, 0, 0));
-        jButton8.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("8");
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButton9.setBackground(new java.awt.Color(0, 0, 0));
-        jButton9.setFont(new java.awt.Font("Tw Cen MT", 0, 21)); // NOI18N
+        jButton9.setFont(new java.awt.Font("Tw Cen MT", Font.PLAIN, 21)); // NOI18N
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("9");
         jButton9.setToolTipText("");
@@ -168,49 +164,37 @@ public class Votacao extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", Font.BOLD, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Urna Eleitoral - Votação");
 
         jButton10.setBackground(new java.awt.Color(255, 204, 0));
-        jButton10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton10.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
         jButton10.setForeground(new java.awt.Color(0, 0, 0));
         jButton10.setText("CORRIGE");
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
+        jButton10.addActionListener(this::jButton10ActionPerformed);
 
         jButton11.setBackground(new java.awt.Color(255, 255, 255));
-        jButton11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton11.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
         jButton11.setForeground(new java.awt.Color(0, 0, 0));
         jButton11.setText("BRANCO");
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
+        jButton11.addActionListener(this::jButton11ActionPerformed);
 
         jButton12.setBackground(new java.awt.Color(0, 255, 0));
-        jButton12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton12.setFont(new java.awt.Font("Dialog", Font.BOLD, 18)); // NOI18N
         jButton12.setForeground(new java.awt.Color(0, 0, 0));
         jButton12.setText("CONFIRMAR ");
         jButton12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
+        jButton12.addActionListener(this::jButton12ActionPerformed);
 
-        jNumero.setFont(new java.awt.Font("Tw Cen MT", 1, 50)); // NOI18N
+        jNumero.setFont(new java.awt.Font("Tw Cen MT", Font.BOLD, 50)); // NOI18N
         jNumero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jNumero.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        nomeCandidato.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        nomeCandidato.setFont(new java.awt.Font("Arial", Font.PLAIN, 18)); // NOI18N
         nomeCandidato.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -322,18 +306,15 @@ public class Votacao extends javax.swing.JFrame {
         }
 
         //Música da urna
-        new Thread(){
-            @Override
-            public void run(){                        
-                try {
-                    AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(diretorio+"\\somUrna.mp3"));
-                    play.play();
-                    play.close();
-                } catch (FileNotFoundException | JavaLayerException ex) {
-                    ex.printStackTrace();
-                } 
+        new Thread(() -> {
+            try {
+                AdvancedPlayer play = new AdvancedPlayer(new FileInputStream(diretorio+"\\somUrna.mp3"));
+                play.play();
+                play.close();
+            } catch (FileNotFoundException | JavaLayerException ex) {
+                ex.printStackTrace();
             }
-        }.start(); 
+        }).start();
 
         dispose();
 
@@ -345,12 +326,7 @@ public class Votacao extends javax.swing.JFrame {
         }
 
         //Retorna ao "Eleitorado"
-        new EventQueue().invokeLater(new Runnable(){
-            @Override
-            public void run(){
-                new Urna().setVisible(true);
-            }
-        });
+        EventQueue.invokeLater(() -> new Urna().setVisible(true));
         
 
     }//GEN-LAST:event_jButton12ActionPerformed
@@ -379,7 +355,7 @@ public class Votacao extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         
-        new EventQueue().invokeLater(() -> new Urna().setVisible(true));
+        EventQueue.invokeLater(() -> new Urna().setVisible(true));
     }
 
 //GEN-LAST:event_jButton11ActionPerformed
